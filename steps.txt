@@ -1,0 +1,12 @@
+uv venv
+
+source .venv/bin/activate
+
+uv sync
+
+huggingface-cli login
+
+run download_culturax_tr
+
+run train tokenizer only shell script
+
