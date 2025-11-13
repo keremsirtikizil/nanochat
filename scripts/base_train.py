@@ -202,6 +202,7 @@ for step in range(num_iterations + 1):
 
     # once in a while: estimate the CORE metric (all ranks participate)
     # use the original uncompiled model because the inputs keep changing shape
+    """
     results = {}
     if core_metric_every > 0 and (last_step or (step > 0 and step % core_metric_every == 0)):
         model.eval()
@@ -215,19 +216,19 @@ for step in range(num_iterations + 1):
             "centered_results": results["centered_results"],
         })
         model.train()
-
+    """
     # once in a while: sample from the model (only on master process)
     # use the original uncompiled model because the inputs keep changing shape
     if master_process and (last_step or (step > 0 and step % sample_every == 0)):
         model.eval()
         prompts = [
-            "The capital of France is",
-            "The chemical symbol of gold is",
-            "If yesterday was Friday, then tomorrow will be",
-            "The opposite of hot is",
-            "The planets of the solar system are:",
-            "My favorite color is",
-            "If 5*x + 3 = 13, then x is",
+            "Fransa'nın başkenti",
+            "Altının kimyasal sembolü",
+            "Eğer dün Cumartesiyse yarın kaçtır.",
+            "Sıcak kelimesinin zıt anlamlısı",
+            "Güneş sistemindeki gezegenler:",
+            "Favori rengim",
+            "Eğer 5*x + 3 = 13, bu durumda x",
         ]
         engine = Engine(orig_model, tokenizer) # use orig_model to avoid recompilation
         for prompt in prompts:

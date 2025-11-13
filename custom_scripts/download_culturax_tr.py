@@ -4,8 +4,8 @@ from datasets import load_dataset
 from tqdm import tqdm
 
 # --- Configuration ---
-max_gb_limit = 25  # Set your limit here
-output_dir = os.path.expanduser("~/.cache/nanochat/base_data")
+max_gb_limit = 30  # Set your limit here
+output_dir = os.path.expanduser("~/nanochat/dataset")
 dataset_name = "uonlp/CulturaX"
 language_split = "tr"
 shard_size = 100000  # Number of documents per parquet file
